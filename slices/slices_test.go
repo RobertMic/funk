@@ -62,9 +62,3 @@ func TestChain2NestedChain(t *testing.T) {
 
 	assert.Equal(t, map[string]struct{}{"0": {}}, output)
 }
-
-func TestFoo(t *testing.T) {
-	ints := []int{0, 1}
-	// slices.ToMap[int, int](ints)
-	ints.Map(func(a int) int { return a })
-}
