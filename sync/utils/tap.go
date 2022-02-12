@@ -1,4 +1,4 @@
-package util
+package utils
 
 // Tap is a helper that lets you observe a value in a chain
 // without modifying it. The value is returned, unmodified so the

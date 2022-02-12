@@ -1,4 +1,4 @@
-package util
+package utils
 
 // Chain2 composes two functions together. It returns a function
 // that can be called with input to call `fn1` and `fn2` on.

@@ -1,7 +1,7 @@
-package util_test
+package utils_test
 
 import (
-	"funk/sync/util"
+	"funk/sync/utils"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -10,5 +10,5 @@ import (
 func TestTap(t *testing.T) {
 	assert := assert.New((t))
 
-	assert.Equal(0, util.Tap(func(a int) {})(0))
+	assert.Equal(0, utils.Tap(func(a int) {})(0))
 }

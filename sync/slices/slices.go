@@ -31,26 +31,18 @@ func Reduce[A, B any](reducer func(A, B) B, start B) func([]A) B {
 	}
 }
 
-// Filter removes any element that returns `true` from the
+// Filter removes any element that returns `false` from the
 // supplied `filter` method.
 // Every element of `input` is passed to `filter`. If `filter`
-// returns `false` the element is kept in the output.
+// returns `true` the element is kept in the output.
 func Filter[A any](filter func(A) bool) func([]A) []A {
 	return func(input []A) []A {
 		var output []A
 		for _, v := range input {
-			if !filter(v) {
+			if filter(v) {
 				output = append(output, v)
 			}
 		}
 		return output
 	}
-}
-
-// Select is like Filter, except the output contains items
-// that the `filter` returns `true` for.
-func Select[A any](filter func(A) bool) func([]A) []A {
-	return Filter(func(a A) bool {
-		return !filter(a)
-	})
 }

@@ -17,6 +17,13 @@ func TestMap(t *testing.T) {
 	assert.Equal([]string{"0", "1", "2", "3"}, output)
 }
 
+func TestFilter(t *testing.T) {
+	input := []int{0, 1, 2, 3}
+	output := slices.Filter(func(a int) bool { return a > 2 })(input)
+
+	assert.Equal(t, []int{3}, output)
+}
+
 func TestMapNested(t *testing.T) {
 	input := []int{0, 1, 2, 3}
 	output := slices.Map(func(a int) []int { return []int{a} })(input)

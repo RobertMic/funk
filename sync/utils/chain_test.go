@@ -1,18 +1,18 @@
-package util_test
+package utils_test
 
 import (
 	"fmt"
 	"testing"
 
 	"funk/sync/slices"
-	"funk/sync/util"
+	"funk/sync/utils"
 
 	"github.com/stretchr/testify/assert"
 )
 
 func TestChain2(t *testing.T) {
 	input := []int{0, 1, 2, 3}
-	output := util.Chain2(
+	output := utils.Chain2(
 		slices.Map(func(a int) int { return a + 1 }),
 		slices.Reduce(func(a int, b int) int { return a + b }, 0),
 	)(input)
@@ -22,7 +22,7 @@ func TestChain2(t *testing.T) {
 
 func TestChain2_2(t *testing.T) {
 	input := []int{0, 1, 2, 3}
-	chain := util.Chain2(
+	chain := utils.Chain2(
 		slices.Reduce(func(a int, b int) int { return a + b }, 0),
 		func(b int) string { return fmt.Sprint(b) },
 	)
@@ -32,15 +32,15 @@ func TestChain2_2(t *testing.T) {
 
 func TestChain2NestedChain(t *testing.T) {
 	input := []int{0, 1, 2, 3}
-	firstChain := util.Chain2(
+	firstChain := utils.Chain2(
 		slices.Map(func(a int) int { return a + 1 }),
 		slices.Map(func(a int) int { return a * 0 }),
 	)
-	secondChain := util.Chain2(
+	secondChain := utils.Chain2(
 		firstChain,
 		slices.Map(func(a int) string { return fmt.Sprint(a) }),
 	)
-	output := util.Chain2(
+	output := utils.Chain2(
 		secondChain,
 		slices.Reduce(func(a string, b map[string]struct{}) map[string]struct{} { b[a] = struct{}{}; return b }, map[string]struct{}{}),
 	)(input)
